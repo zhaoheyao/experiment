@@ -1,23 +1,42 @@
 package com.example.demo08.controller;
-
 import com.example.demo08.component.EncryptorComponent;
+
 import com.example.demo08.entity.User;
+
+import lombok.Getter;
+
 import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.web.bind.annotation.*;
+
 import org.springframework.web.server.ResponseStatusException;
 
+
+
 import javax.servlet.http.HttpServletResponse;
+
 import java.util.HashMap;
+
 import java.util.Map;
+
 import java.util.Optional;
 
+
+
 @Slf4j
+
 @RestController
+
 @RequestMapping("/api")
+
 public class UserController {
+
 
 
     private Map<String, User> users = new HashMap();
@@ -33,7 +52,6 @@ public class UserController {
 
 
     @PostMapping("/register")
-
     public Map register(@RequestBody User user) {
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
